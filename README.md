@@ -1,13 +1,12 @@
-# A Complete Intro to React
+# A decent React app starting point
 
-Welcome to a complete intro to React! The site actual workshop material for this repo can be found [here][gh-page]. On the master branch you will find the completed project. On the start branch you will find the barebones boilerplater of the project designed to help you get started.
+## Includes:
+* Yarn
+* ESlint
+* Prettier
+* Webpack
+* Hot Module Replacement
+* Styled Components
 
-## Contributing
 
-Please contribute, file issues, and make PRs. More than anything I'm sure there are typos abounding.
 
-## License
-
-MIT
-
-[gh-page]: http://btholt.github.io/complete-intro-to-react/
