@@ -1,0 +1,70 @@
+import React from 'react'
+import { string } from 'prop-types'
+import styled from 'styled-components'
+
+const CardWrapper = styled.div`
+	width: 48%;
+	margin: 0 0 1%;
+	background: #fff7fa;
+	border-radius: 3px;
+	box-shadow: 0 0 3vw 0 rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+`
+
+const Title = styled.h3`
+	color: dodgerblue;
+	border-bottom: 2px solid green;
+	padding-bottom: 5px;
+`
+const CardImg = styled.div`
+	width: 93%;
+
+	& img {
+		width: inherit;
+	}
+`
+const CardText = styled.div`
+	width: 96%;
+	margin-right: 4%;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: flex-start;
+`
+
+const ShowCard = props =>
+	<CardWrapper>
+		<CardImg>
+			<img alt={`${props.title}`} src={`/public/img/posters/${props.poster}`} />
+		</CardImg>
+		<CardText>
+			<Title>
+				{props.title}
+			</Title>
+			<h4>
+				({props.year})
+			</h4>
+			<p>
+				{props.description}
+			</p>
+		</CardText>
+	</CardWrapper>
+
+ShowCard.propTypes = {
+	title: string.isRequired,
+	poster: string.isRequired,
+	year: string.isRequired,
+	description: string.isRequired
+}
+
+// ShowCard.propTypes = {
+// 	show: shape({
+// 		title: string.isRequired,
+// 		poster: string.isRequired,
+// 		year: string.isRequired,
+// 		description: string.isRequired
+// 	}).isRequired
+// }
+
+export default ShowCard
