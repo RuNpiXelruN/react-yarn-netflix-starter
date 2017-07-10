@@ -1,8 +1,49 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-// import {Link} from 'react-router-dom'
-import preload from '../data.json'
 import ShowCard from './ShowCard'
+
+class Search extends Component {
+	defaultProps = {
+		shows: []
+	}
+
+	state = {
+		searchTerm: ''
+	}
+
+	props: {
+		shows: Array
+	}
+
+	handleSearchInputChange = e => {
+		this.setState({ searchTerm: e.target.value })
+	}
+	render() {
+		return (
+			<Container>
+				<SearchNav>
+					<Header>
+						{'Notflix'}
+					</Header>
+					<SearchInput
+						value={this.state.searchTerm}
+						onChange={this.handleSearchInputChange}
+						placeholder="Enter show name..."
+						type="text"
+					/>
+				</SearchNav>
+				<ResultsWrapper>
+					{this.props.shows
+						.filter(
+							show =>
+								`${show.title} ${show.description}`.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) >= 0
+						)
+						.map(show => <ShowCard key={show.imdbID} {...show} />)}
+				</ResultsWrapper>
+			</Container>
+		)
+	}
+}
 
 const Header = styled.h1`
 	font-size: 32px;
@@ -32,40 +73,5 @@ const SearchNav = styled.div`
 	justify-content: space-between;
 	width: 100%;
 `
-
-class Search extends Component {
-	state = {
-		searchTerm: ''
-	}
-
-	handleSearchInputChange = e => {
-		this.setState({ searchTerm: e.target.value })
-	}
-	render() {
-		return (
-			<Container>
-				<SearchNav>
-					<Header>
-						{'Notflix'}
-					</Header>
-					<SearchInput
-						value={this.state.searchTerm}
-						onChange={this.handleSearchInputChange}
-						placeholder="Enter show name..."
-						type="text"
-					/>
-				</SearchNav>
-				<ResultsWrapper>
-					{preload.shows
-						.filter(
-							show =>
-								`${show.title} ${show.description}`.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) >= 0
-						)
-						.map(show => <ShowCard key={show.imdbID} {...show} />)}
-				</ResultsWrapper>
-			</Container>
-		)
-	}
-}
 
 export default Search

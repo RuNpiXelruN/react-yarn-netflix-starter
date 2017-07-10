@@ -5,7 +5,9 @@ import styled from 'styled-components'
 const CardWrapper = styled.div`
 	width: 48%;
 	margin: 0 0 1%;
-	background: #fff7fa;
+	color: white;
+	font-family: sans-serif;
+	background: #2e2b3b;
 	border-radius: 3px;
 	box-shadow: 0 0 3vw 0 rgba(0, 0, 0, 0.2);
 	display: flex;
@@ -14,10 +16,10 @@ const CardWrapper = styled.div`
 `
 
 const Title = styled.h3`
-	color: dodgerblue;
-	border-bottom: 2px solid green;
+	color: #c79534;
 	padding-bottom: 5px;
 `
+
 const CardImg = styled.div`
 	width: 93%;
 
@@ -31,6 +33,12 @@ const CardText = styled.div`
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: flex-start;
+
+	& h4,
+	p {
+		font-size: 14px;
+		color: #ababbb;
+	}
 `
 
 const ShowCard = props =>
